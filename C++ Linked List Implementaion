@@ -298,6 +298,27 @@ class List
         }
         return curr->item;
     }
+    void reverse()
+    {
+        Node *curr = new Node;
+        Node *prev = NULL;
+        Node *next = NULL;
+        curr = head;
+        while(curr!=NULL)
+        {
+            next = curr->next;
+            curr->next = prev;
+            if(prev == NULL)
+            {
+                tail = curr;    
+            }
+            
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+        
+    }
 };
     
 

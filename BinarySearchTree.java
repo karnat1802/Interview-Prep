@@ -27,20 +27,40 @@ public class BinarySearchTree extends BSTNode
         
         return root;    
     }
-}
-
-class BST
- {
-     public static void main(String[] args)
-    {                 
-        Scanner sc = new Scanner(System.in);
-        BinarySearchTree tree = new BinarySearchTree();
-        
-        tree.insert(15);
-        tree.insert(23);
-        tree.insert(56);
-        tree.insert(95);
-        tree.insert(45);
+    
+    public int countNodes()
+    {
+        return count(root);
+    }
+    
+    public int count(BSTNode root)
+    {
+       if (root == null)
+             return 0;
+         else
+         {
+             int l = 1;
+             l += count(root.left);
+             l += count(root.right);
+             return l;
+         }
+    }
+    
+    public void printValues()
+    {
+        inorderTreeTraversal(root);
+    }
+    
+    public void inorderTreeTraversal(BSTNode root)
+    {
+        if(root == null)
+            return;
+        inorderTreeTraversal(root.left);
+        System.out.println(root.data);
+        inorderTreeTraversal(root.right);
         
     }
- }
+    
+}
+
+

@@ -8,15 +8,25 @@ public class BST extends BinarySearchTree
         BinarySearchTree tree = new BinarySearchTree();
         
         tree.insert(15);
-        tree.insert(23);
-        tree.insert(56);
-        tree.insert(95);
-        tree.insert(45);
+        tree.insert(20);
+        tree.insert(10);
+        tree.insert(18);
+        tree.insert(22);
+        tree.insert(4);
+        tree.insert(12);
+        tree.insert(14);
+        tree.insert(24);
         System.out.println("Number of nodes in the tree is ");
         System.out.println(tree.countNodes());
         
         System.out.println("The values stored in the tree from min to max");
-        tree.printValues();
+        tree.printValuesInOrder();
+        
+        System.out.println("The min value in the node is ");
+        tree.findMin();
+        
+        System.out.println("The max value in the node is ");
+        tree.findMax();
     }
  
 }

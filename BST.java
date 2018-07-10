@@ -27,6 +27,12 @@ public class BST extends BinarySearchTree
         
         System.out.println("The max value in the node is ");
         tree.findMax();
+        
+        System.out.println("Check if value "+21+" is in Tree: " +tree.is_in_tree(21));
+        
+        System.out.println("Height of the tree is "+tree.getHeight());
+        
+        System.out.println("Is the tree a BST? "+tree.isBST());
     }
  
 }

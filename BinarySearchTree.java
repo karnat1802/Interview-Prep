@@ -79,6 +79,10 @@ public class BinarySearchTree extends BSTNode
         
     }
     
+    public void deleteTree(){
+        root = null;
+    }
+    
     public void findMax()
     {
         BSTNode max = findMax(root);
@@ -96,6 +100,61 @@ public class BinarySearchTree extends BSTNode
     public void delete(int val)
     {
         root = deleteNode(root, val);
+    }
+    
+    public boolean is_in_tree(int val)
+    {
+        return is_in_tree(root,val);
+    }
+    
+    public boolean is_in_tree(BSTNode root, int val)
+    {
+        if(root == null)
+        {
+            return false;
+        }
+        
+        else if(root.data < val)
+            return is_in_tree(root.right, val);
+            
+        else if(root.data > val)
+            return is_in_tree(root.left, val);
+            
+        else{
+            return true;
+        }
+    }
+    
+    public int getHeight(){
+        return getHeight(root);
+    }
+    
+    public int getHeight(BSTNode root)
+    {
+        if(root == null)
+            return 0;
+            
+        int heightOfLeft = getHeight(root.left);
+        int heightOfRight = getHeight(root.right);
+        
+        return Math.max(heightOfLeft, heightOfRight)+1;
+    }
+    
+    public boolean isBST()
+    {
+        return isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE)
+;    }
+    
+    public boolean isBST(BSTNode root, int min, int max){
+        if(root == null)
+            return true;
+        
+        else if(root.data > max || root.data < min)
+            return false;
+             
+        if(isBST(root.left,min,root.data ) && isBST(root.right,root.data, max)) 
+            return true;
+        return false;
     }
     
     public BSTNode deleteNode(BSTNode root,int val)

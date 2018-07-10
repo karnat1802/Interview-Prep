@@ -142,8 +142,56 @@ public class BinarySearchTree extends BSTNode
     
     public boolean isBST()
     {
-        return isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE)
-;    }
+        return isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);    
+    }
+    
+    public int get_successor(int val){
+        return getSuccessor(root, val);
+    }
+    
+    public BSTNode find(BSTNode root, int val)
+    {
+        if(root.data < val)
+            return find(root.right, val);
+            
+        else if(root.data > val)
+            return find(root.left, val);
+            
+        else{
+            return root;
+        }
+        
+        
+    }
+    
+    
+    public int getSuccessor(BSTNode root, int val)
+    {
+        BSTNode current = find(root,val);
+        
+        if(current.right!=null)
+        {
+            return findMin(current.right).data;
+        }
+        
+        else 
+        {
+            BSTNode successor = null;
+            BSTNode ancestor = root;
+            while(ancestor != current){
+                if(current.data < ancestor.data ){
+                    successor = ancestor;
+                    ancestor = ancestor.left;
+                }
+                else{
+                    ancestor = ancestor.right;
+                }
+            }
+            return successor.data;
+        }
+        
+        
+    }
     
     public boolean isBST(BSTNode root, int min, int max){
         if(root == null)

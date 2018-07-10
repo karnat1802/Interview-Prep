@@ -33,6 +33,9 @@ public class BST extends BinarySearchTree
         System.out.println("Height of the tree is "+tree.getHeight());
         
         System.out.println("Is the tree a BST? "+tree.isBST());
+        
+        
+        System.out.println("Successor of 14 is "+tree.get_successor(14));
     }
  
 }

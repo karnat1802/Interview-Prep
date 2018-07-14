@@ -3,33 +3,31 @@
 public class Partition
 {
     
-    public ListNode Partition(ListNode head, int x)
+    public ListNode Partition(ListNode node, int x)
     {
-        ListNode dummy1 = new ListNode(0);
-        ListNode dummy2 = new ListNode(0);
-        ListNode curr1 = dummy1;
-        ListNode curr2 = dummy2;
+        ListNode head = node;
+        ListNode tail = node;
         
-        while(head!=null)
+        while(node!=null)
         {
+            ListNode next = node.next;
             if(head.val < x)
             {
-                curr1.next = head;
-                curr1 = head;
+                node.next = head;
+                head = node;
             }
             
             else{
-                curr2.next = head;
-                curr2 = head;
+                tail.next = node;
+                tail = node;
                 
             }
-            head = head.next;
+            node = next;
             
         }
         
-        curr2.next = null;
-        curr1.next = dummy2.next;
-        return dummy1.next;
+        tail.next = null;
+        return head;
     }
 
     
